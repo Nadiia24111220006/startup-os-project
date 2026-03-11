@@ -49,7 +49,7 @@ function Dashboard() {
       const result = await response.json();
 
       if (response.ok) {
-        alert("Успіх ЛР5: " + result.message);
+        alert("" + result.message);
       } else {
         alert("Помилка валідації сервера: " + result.error);
       }
