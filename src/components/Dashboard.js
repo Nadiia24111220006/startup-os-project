@@ -17,7 +17,6 @@ function Dashboard() {
   const oldExpenses = 42000;
   const oldStaff = 24;
 
-  // --- ЛР №5: Отримання даних з сервера Node.js ---
   useEffect(() => {
     const fetchFromNode = async () => {
       try {
@@ -35,7 +34,6 @@ function Dashboard() {
     fetchFromNode();
   }, []);
 
-  // --- ЛР №5: Збереження на сервер Node.js (Пункт 4) ---
   const saveStartupToServer = async () => {
     try {
       const response = await fetch('https://startup-backend-nadiia.onrender.com', {

@@ -2,15 +2,17 @@ const express = require('express');
 const cors = require('cors');
 const admin = require('firebase-admin');
 
-// --- ЛОГІКА ДЛЯ ДЕПЛОЮ (Env Variables) ---
-// На Render беремо ключ зі змінної оточення, на ПК — з файлу
 let serviceAccount;
 try {
-  serviceAccount = process.env.FIREBASE_KEY 
-    ? JSON.parse(process.env.FIREBASE_KEY) 
-    : require('./serviceAccountKey.json');
+  if (process.env.FIREBASE_KEY) {
+    // Чистимо ключ від можливих зайвих пробілів при копіюванні в Render
+    serviceAccount = JSON.parse(process.env.FIREBASE_KEY.trim());
+  } else {
+    // Якщо працюємо локально на комп'ютері
+    serviceAccount = require('./serviceAccountKey.json');
+  }
 } catch (error) {
-  console.error("Помилка завантаження ключів Firebase:", error.message);
+  console.error("Критична помилка завантаження ключів Firebase:", error.message);
 }
 
 // Ініціалізація Firebase Admin
@@ -26,12 +28,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Головна сторінка, щоб не було "Cannot GET /"
+// Головна сторінка
 app.get('/', (req, res) => {
   res.send('Бекенд стартапу працює! Використовуйте /api/startup');
 });
 
-// 1. GET Маршрут: Отримання інформації про компанію
+// 1. GET Маршрут: Отримання інформації
 app.get('/api/startup', async (req, res) => {
   try {
     const startupRef = db.collection('startups').doc('main_info');
@@ -46,11 +48,10 @@ app.get('/api/startup', async (req, res) => {
   }
 });
 
-// 2. POST Маршрут: Збереження інформації з валідацією
+// 2. POST Маршрут: Збереження інформації
 app.post('/api/startup', async (req, res) => {
   const { name, domain, staff } = req.body;
 
-  // ВАЛІДАЦІЯ: мінімум 5 знаків
   if (!name || name.length < 5) {
     return res.status(400).json({ 
       error: "Назва компанії має містити мінімум 5 символів!" 
@@ -70,7 +71,6 @@ app.post('/api/startup', async (req, res) => {
   }
 });
 
-// На Render порт призначається автоматично через process.env.PORT
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Сервер працює на порту ${PORT}`);
