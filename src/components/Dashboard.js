@@ -20,7 +20,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchFromNode = async () => {
       try {
-        const response = await fetch('https://startup-backend-nadiia.onrender.com');
+        const response = await fetch('https://startup-backend-nadiia.onrender.com/api/startup');
         if (response.ok) {
           const data = await response.json();
           setProjectName(data.name);
@@ -36,7 +36,7 @@ function Dashboard() {
 
   const saveStartupToServer = async () => {
     try {
-      const response = await fetch('https://startup-backend-nadiia.onrender.com', {
+      const response = await fetch('https://startup-backend-nadiia.onrender.com/api/startup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
