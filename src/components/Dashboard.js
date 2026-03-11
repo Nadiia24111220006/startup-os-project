@@ -21,7 +21,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchFromNode = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/startup');
+        const response = await fetch('https://startup-backend-nadiia.onrender.com');
         if (response.ok) {
           const data = await response.json();
           setProjectName(data.name);
@@ -38,7 +38,7 @@ function Dashboard() {
   // --- ЛР №5: Збереження на сервер Node.js (Пункт 4) ---
   const saveStartupToServer = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/startup', {
+      const response = await fetch('https://startup-backend-nadiia.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
