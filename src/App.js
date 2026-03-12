@@ -42,7 +42,6 @@ function App() {
         </div>
         
         <nav>
-          {/* Додав контурні іконки замість пустих span */}
           <label htmlFor="nav-create" className="nav-btn">
             <Home size={18} style={{marginRight: '10px'}} /> Мій стартап
           </label>
@@ -56,7 +55,6 @@ function App() {
         
         <div className="sidebar-footer">
             <div className="user-info">
-               {/* КАРТИНКУ АВАТАРА ВИДАЛЕНО ТУТ */}
                <div style={{paddingLeft: '5px'}}>
                  <strong style={{fontSize: '14px'}}>{user.email.split('@')[0]}</strong>
                  <p style={{fontSize: '10px', color: '#64748b'}}>CEO Founder</p>
@@ -72,7 +70,7 @@ function App() {
         </div>
         
         <div id="panel-market" className="tab-panel">
-          {/* У Market.js ми вже додали відступ між заголовком і кнопками */}
+          {/* У Market.js відступ між заголовком і кнопками */}
           <Market />
         </div>
 

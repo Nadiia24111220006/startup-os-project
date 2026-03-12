@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
   res.send('Бекенд стартапу працює! Використовуйте /api/startup');
 });
 
-// 1. GET Маршрут: Отримання інформації
+// GET Маршрут: Отримання інформації
 app.get('/api/startup', async (req, res) => {
   try {
     const startupRef = db.collection('startups').doc('main_info');
@@ -48,7 +48,7 @@ app.get('/api/startup', async (req, res) => {
   }
 });
 
-// 2. POST Маршрут: Збереження інформації
+// POST Маршрут: Збереження інформації
 app.post('/api/startup', async (req, res) => {
   const { name, domain, staff } = req.body;
 

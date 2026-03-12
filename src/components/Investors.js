@@ -25,14 +25,14 @@ function Investors() {
 
   const handleSendPitch = async (investorName) => {
     try {
-      // 1. Записуємо в Firebase (Завдання 2.3)
+      // Записуємо в Firebase 
       await addDoc(collection(db, "pitches"), {
         investor: investorName,
         status: "Sent",
         timestamp: new Date()
       });
 
-      // 2. Оновлюємо інтерфейс (робимо кнопку зеленою)
+      // Оновлюємо інтерфейс (робимо кнопку зеленою)
       setSentPitches(prev => [...prev, investorName]);
       
     } catch (e) {

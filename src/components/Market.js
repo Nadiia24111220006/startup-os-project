@@ -22,9 +22,7 @@ function Market() {
         <section className="tab-panel" style={{ display: 'block', padding: '20px' }}>
             <h2 className="section-title">Аналіз ринку</h2>
             
-            {/* 1. Трішки відступу (margin-top) між заголовком і кнопками */}
             <div style={{ display: 'flex', gap: '10px', marginTop: '15px', marginBottom: '25px' }}>
-                {/* 2. Кнопки з контурними іконками */}
                 {[
                     {id: 'Bci', icon: <LayoutGrid size={16}/>},
                     {id: 'AI', icon: <Brain size={16}/>},
@@ -56,7 +54,6 @@ function Market() {
             <div className="market-cards-container">
                 {filteredItems.map((item) => (
                     <div key={item.id} className="market-item">
-                        {/* 3. Картинка знову прямокутна (стандартна) */}
                         <img src={item.img} alt={item.title} style={{ width: '100%', height: '180px', objectFit: 'cover' }} />
                         <div className="market-info">
                             <span className="m-tag blue">{item.tag}</span>

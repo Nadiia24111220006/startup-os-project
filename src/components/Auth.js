@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { auth, db } from '../firebase'; // Додали db тут
+import { auth, db } from '../firebase'; 
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore'; // Додали методи Firestore
+import { doc, setDoc } from 'firebase/firestore'; // методи Firestore
 
 function Auth() {
     const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ function Auth() {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
 
-                // 2. ЗАПИС ДАНИХ У FIRESTORE (Завдання 2.3)
+                // ЗАПИС ДАНИХ У FIRESTORE 
                 // Створюємо документ у колекції 'users' з ID, що дорівнює UID користувача
                 await setDoc(doc(db, "users", user.uid), {
                     email: user.email,

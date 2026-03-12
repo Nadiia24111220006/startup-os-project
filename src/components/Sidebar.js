@@ -28,7 +28,6 @@ function Sidebar({ user, onLogout }) {
 
             <div className="sidebar-footer">
                 <div className="user-info">
-                    {/* ПОВНІСТЮ ВИДАЛЕНО <img /> або <div className="avatar"> */}
                     <div style={{ marginLeft: '10px' }}>
                         <strong>{user?.email.split('@')[0]}</strong>
                         <p style={{ fontSize: '10px', color: 'var(--text-muted)' }}>CEO Founder</p>
